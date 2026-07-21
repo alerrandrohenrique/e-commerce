@@ -14,7 +14,7 @@ import { UpperCasePipe } from '@angular/common';
 export class ListaProdutos { 
   //lista de produtos de dados - array
   produtos = signal([
-    {nome:'Processador Intel Core', preco: 729.99},
+    {nome:'Processador Intel Core', preco: 7299.99},
     {nome:'Celular Xiaomi', preco: 2499.99},
     {nome:'Fone Gamer', preco: 499.99},
     {nome:'Placa de video', preco: 2700.99},
@@ -42,11 +42,11 @@ export class ListaProdutos {
   //!função para substituir a lista atual usando o metodo atual
   substituirProdutos(){
     this.produtos.set([
-      {nome: 'Processador Intel Core', preco:230.00 },
-      {nome: 'Celular Xiaomi', preco: 34.55 },
-      {nome: 'Celular Xiaomi', preco: 2300.99 },
-      {nome: 'Placa de video', preco: 3700.99 },
-      {nome: 'Processador Ryzen', preco: 7800.99 }
+      {nome: 'Processador Intel Core', preco:930.00 },
+      {nome: 'Celular Xiaomi', preco: 340.99 },
+      {nome: 'Celular Xiaomi', preco: 2000.99 },
+      {nome: 'Placa de video', preco: 3000.99 },
+      {nome: 'Processador Ryzen', preco: 2800.99 }
     ]);
   }
   constructor() {
@@ -65,5 +65,20 @@ export class ListaProdutos {
   } 
   //! metodo para criar um estado de seleção com signal string | null
   produtoSelecionado = signal <string | null>(null);
-  
+  //! metodo para criar um estado para carrinho com signal
+  carrinho = signal <{nome: string; preco: number}[]> ([]);
+  adicionarAoCarrinho (produto: {nome: string; preco: number}){
+    this.carrinho.update(listaAtual => [
+    ...listaAtual, produto]
+  );
+     }
+   //! totalProdutos = computed (() => this.produtos().length;
+   //metodo para calcular a quantidade total de itens no carrinho
+   quantidadeCarrinho = computed (() => this.carrinho().length)
+  //metodo para calcular o valor total dos itens do carrinho
+  totalCarrinho = computed (() =>{
+    return this.carrinho().reduce((total, item) =>
+    total + item.preco,0
+
+  )});
 }
