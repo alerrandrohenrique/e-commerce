@@ -3,6 +3,8 @@ import { Component, signal } from '@angular/core';
 //import {Produto} from './components/produto/produto'; //importando a classe Produto do arquivo produto.ts do componente app
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { UpperCasePipe } from '@angular/common';
+import { usuarioLogado, login, logout } from './core/auth';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, UpperCasePipe],
@@ -11,5 +13,8 @@ import { UpperCasePipe } from '@angular/common';
 })
 export class App {
   protected readonly title = signal('e-commerce');
-  nomeLoja = 'Mercado aleatorio'
+  nomeLoja = 'Mercado aleatorio';
+  usuarioLogado = usuarioLogado;
+  login = login;
+  logout = logout;
 }
