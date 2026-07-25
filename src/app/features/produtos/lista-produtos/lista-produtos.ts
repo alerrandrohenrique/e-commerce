@@ -5,7 +5,8 @@ import { computed } from '@angular/core';
 import { PrecoFormatadoPipe } from '../../../shared/pipes/preco-formatado-pipe';
 import { effect } from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { produtosService } from '../produtos.service';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -28,6 +29,9 @@ export class ListaProdutos {
     console.log('Produto Selecionado: ', nome);
     this.produtoSelecionado.set(nome);
   }
+//** inject */
+private produtosService = inject(produtosService);
+
   //! função que adiciona produtos usando metodo update()
   adicionarProduto(){
     this.produtos.update(listaAtual =>[
@@ -53,24 +57,20 @@ export class ListaProdutos {
     ]);
   }
     carregarProdutos(){
-    this.carregando.set(true);
-    this.http.get<{title: string; price: number}[]>
-    ('https://fakestoreapi.com/products').subscribe({
+   this.carregando.set(true);
+    this.produtosService.buscarProdutos().subscribe({
       next: (dados) => {
-        const produtosFormatados = dados.map(p => ({
-          nome: p.title,
-          preco: p.price
-        }));
-        this.produtos.set(produtosFormatados);
+        const produtos = this.produtosService.transformarProduto(dados);
+        this.produtos.set(produtos)
         this.carregando.set(false);
       },
       error: (error) => {
-        console.error('Erro ao carregar produtos: ', error);
-        this.carregando.set(false);
+      console.error('Erro ao carregar produtos', );
+      this.carregando.set(false);
       }
-    });
+    }); 
   }
-  constructor (private http: HttpClient) {
+  constructor () {
     //! carrega a API
     this.carregarProdutos();
     //! esffects continuam iguais
@@ -100,4 +100,5 @@ export class ListaProdutos {
     total + item.preco,0
 
   )});
+
 }
