@@ -69,7 +69,7 @@ private produtosService = inject(produtosService);
       this.carregando.set(false);
       }
     }); 
-  } 
+  }
   constructor () {
     //! carrega a API
     this.carregarProdutos();
