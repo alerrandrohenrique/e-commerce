@@ -18,7 +18,7 @@ type Produto = {
 @Injectable({providedIn: 'root'})
 export class produtosService {
     private http = inject(HttpClient);
-    private API = 'https://fakestoreapi.com/products';
+    private API = 'https://fakestoreapi.com/productss';
     buscarProdutos(){
         return this.http.get<ProdutoApi[]>(this.API);
 
@@ -30,5 +30,3 @@ export class produtosService {
      }));
     }
 }
-
-
