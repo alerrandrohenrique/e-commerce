@@ -17,12 +17,11 @@ import { inject } from '@angular/core';
 export class ListaProdutos { 
  //! signal
   produtos = signal <{nome: string; preco: number}[]>([]);
-
   carregando = signal (true);
-
   produtoSelecionado = signal <string | null>(null);
-
   carrinho = signal<{nome: string; preco: number}[]>([]);
+
+  erro = signal < string | null>(null);
   
   //!funçao para exibir produtos selecionados pelo usuario console
   exibirProduto(nome: string){
@@ -57,6 +56,7 @@ private produtosService = inject(produtosService);
     ]);
   }
     carregarProdutos(){
+      this.erro.set(null); //! limpar o erro antes de fazer a requisitação
    this.carregando.set(true);
     this.produtosService.buscarProdutos().subscribe({
       next: (dados) => {
@@ -66,6 +66,7 @@ private produtosService = inject(produtosService);
       },
       error: (error) => {
       console.error('Erro ao carregar produtos', );
+      this.erro.set('Erro ao carregar esta pagina. Tente novamente mais tarde')
       this.carregando.set(false);
       }
     }); 
