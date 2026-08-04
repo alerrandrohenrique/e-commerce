@@ -27,19 +27,20 @@
 <hr> --> 
 
 <h2>Produtos</h2>
+<!-- ESTADO 1: carregando -->
 @if(carregando()){
-    <p> Carregando produtos...</p>
+    <p><strong>carregamento produtos, aguarde...</strong></p>
 }
-@if (!carregando()){
-    @for(item of produtos(); track item){
-        <app-produto
-        [nome] ="item.nome"
-        [preco] ="item.preco"
-        >
-    </app-produto>
-    <button (click)="adicionarAoCarrinho(item)" >Adicionar ao Carrinho</button>
-    }
+
+<!--ESTADO 2: Erro -->
+@if(erro()){
+ <p><strong style="color: red;">{{erro() }}</strong></p>
+    <button  click="carregarProdutos()">Tente novamente</button>   
 }
+@if(!carregando() && !erro()){
+    <p><strong>Quantidade de produtos: </strong>{{ totalProdutos() }}</p>
+}
+
 
 <!-- Carrinho -->
 <hr>
