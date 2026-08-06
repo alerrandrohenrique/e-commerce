@@ -10,7 +10,7 @@ import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-lista-produtos',
-  imports: [Produto, PrecoFormatadoPipe, UpperCasePipe],
+  imports: [Produto, PrecoFormatadoPipe,],
   templateUrl: './lista-produtos.html',
   styleUrl: './lista-produtos.css',
 })
