@@ -8,7 +8,7 @@ export const routes: Routes = [
         .then((m) => m.Home),
     },
     {
-        path:'produto', //!router para produtos localhost:4200/
+        path:'produtos', //!router para produtos localhost:4200/
         loadComponent: () =>
             import('./features/produtos/lista-produtos/lista-produtos')
         .then((m) => m.ListaProdutos),
