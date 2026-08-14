@@ -13,7 +13,8 @@ styleUrl: './header.css',
 export class Header {
 private carrinhoService = inject(CarrinhoService);
 private authService = inject(AuthService);
-quantidade = this.carrinhoService.QuantidadeItens;
+quantidade = this.carrinhoService.QuantidadeItens
+;
 estaLogado = this.authService.estaLogado;
 usuarioAtual = this.authService.usuarioAtual;
 sair() {
