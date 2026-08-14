@@ -19,7 +19,9 @@ export class CarrinhoService{
     carrinhoVazio = computed(() => this.carrinho().length ===0);
 
     // Todo: Ações
-    adicionar(produto: ItemCarrinho){
+    adicionar(produto: ItemCarrinho
+        
+    ){
         this.carrinho.update(lista => [...lista, produto]);
         }
         //Todo: Ação de faxina
