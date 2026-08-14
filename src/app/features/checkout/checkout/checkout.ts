@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { CarrinhoService } from '../../../core/Services/carrinho.service';
+import { CarrinhoService
+  
+ } from '../../../core/Services/carrinho.service';
 
 @Component({
   selector: 'app-checkout',
