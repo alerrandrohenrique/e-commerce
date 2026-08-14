@@ -16,6 +16,7 @@ Authorization: `Bearer ${token}`,
 })
 : req;
 
+
 // SEGUE COM A NOVA REQUEST + LOG RESPONSE
 return next(novaReq).pipe(
 tap({
