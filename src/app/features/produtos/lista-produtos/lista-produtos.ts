@@ -32,8 +32,8 @@ export class ListaProdutos {
 //*----------------------- inject --------------------------*/
 private produtosService = inject(produtosService);
 public carrinhoService = inject(CarrinhoService);
-quantidadeCarrinho = this.carrinhoService.QuantidadeItens;
-totalCarrinho = this.carrinhoService.TotalItens;
+quantidadeCarrinho = this.carrinhoService.quantidade;
+totalCarrinho = this.carrinhoService.total;
 
 
   //! função que adiciona produtos usando metodo update()
