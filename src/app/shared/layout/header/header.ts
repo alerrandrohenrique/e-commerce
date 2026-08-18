@@ -14,7 +14,7 @@ export class Header {
 private carrinhoService = inject(CarrinhoService);
 private authService = inject(AuthService);
 private router = inject(Router);
-quantidade = this.carrinhoService.QuantidadeItens;
+quantidade = this.carrinhoService.quantidade;
 estaLogado = this.authService.estaLogado;
 usuarioAtual = this.authService.usuarioAtual;
 sair() {
