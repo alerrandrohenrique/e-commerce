@@ -62,5 +62,5 @@
       <p>{{item.nome}} - {{item.preco | precoFormatado}}</p>
 }
 <hr>
-<p><strong> itens no Carrinho: </strong>{{carrinhoService.QuantidadeItens()}}</p>
-<p><strong>Valor total do carrinho: </strong>{{carrinhoService.TotalItens() | precoFormatado}}</p>
+<p><strong> itens no Carrinho: </strong>{{carrinhoService.quantidade()}}</p>
+<p><strong>Valor total do carrinho: </strong>{{carrinhoService.total() | precoFormatado}}</p>
