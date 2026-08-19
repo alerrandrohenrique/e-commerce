@@ -1,15 +1,11 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-
-import { AuthService } from './Services/auth.service';
-
+import { AuthFacade } from './Facades/auth.facade';
 export const authGuard: CanActivateFn = () => {
-const authService = inject(AuthService);
+const authFacade = inject(AuthFacade);
 const router = inject(Router);
-
-if (authService.estaLogado()) {
+if (authFacade.estaLogado()) {
 return true;
 }
-
 return router.createUrlTree(['/login']);
 };
